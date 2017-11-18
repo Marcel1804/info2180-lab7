@@ -3,23 +3,35 @@ window.onload = function (){
     
     let lookUp = document.getElementById("lookup");
     let country =document.getElementById("country");
+    let allCountry =document.getElementById("allcountries");
     let msg;
-    lookUp.addEventListener("click",function(){
-       msg=country.getAttribute("value");
+    let url;
    
     
-    let httpRequest = new XMLHttpRequest();
-    let url = "https://info2180-lab7-marcel1804.c9users.io/world.php?country="+msg;
+    lookUp.addEventListener("click",function(){
+              console.log("ok");
+              msg=country.getAttribute("value");
+              url = "https://info2180-lab7-marcel1804.c9users.io/world.php?country="+msg;
+       
+           
+        });
+        
+    allCountry.addEventListener("click",function(){
+             console.log("ok 1");
+             msg=allCountry.getAttribute("value");
+             url = "https://info2180-lab7-marcel1804.c9users.io/world.php?all="+msg;
+          });
     
-    httpRequest.onreadystatechange= function(){
+    
+    let httpRequest = new XMLHttpRequest();
+    
+     httpRequest.onreadystatechange= function(){
         if(this.readyState==4 && this.status==200){
-            console.log("ok");
             document.getElementById("result").innerHTML=this.responseText;
-            
         }
     };
+    
     httpRequest.open("GET",url,true);
     httpRequest.send();
-    
-    });
+
 }
