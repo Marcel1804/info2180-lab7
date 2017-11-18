@@ -1,5 +1,6 @@
 <?php
 
+$query=$_GET['country'];
 $host = getenv('IP');
 $username = getenv('C9_USER');
 $password = '';
@@ -13,6 +14,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<ul>';
 foreach ($results as $row) {
-  echo '<li>' . $row['name'] . ' is ruled by ' . $row['head_of_state'] . '</li>';
+    if ($row['name']==$query){
+            echo '<li>' . $row['name'] . ' is ruled by ' . $row['head_of_state'] . '</li>';
+    }
 }
 echo '</ul>';
