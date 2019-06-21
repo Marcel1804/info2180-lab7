@@ -6,7 +6,6 @@ window.onload = function (){
     let allCountry =document.getElementById("allcountries");
     let msg;
     let url;
-   
     
     lookUp.addEventListener("click",function(){
               console.log("ok");
@@ -20,18 +19,19 @@ window.onload = function (){
              console.log("ok 1");
              msg=allCountry.getAttribute("value");
              url = "https://info2180-lab7-marcel1804.c9users.io/world.php?all="+msg;
-          });
-    
+        });
     
     let httpRequest = new XMLHttpRequest();
+ 
     
-     httpRequest.onreadystatechange= function(){
+    httpRequest.onreadystatechange= function(){
         if(this.readyState==4 && this.status==200){
             document.getElementById("result").innerHTML=this.responseText;
+            
         }
     };
-    
     httpRequest.open("GET",url,true);
     httpRequest.send();
+    
 
 }
